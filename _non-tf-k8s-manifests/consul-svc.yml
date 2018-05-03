@@ -1,0 +1,84 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: consul
+  labels:
+    name: consul
+spec:
+  clusterIP: None
+  # https://www.consul.io/docs/agent/options.html#ports-used
+  ports:
+    - name: server
+      port: 8300
+      targetPort: 8300
+    - name: serflan-tcp
+      protocol: "TCP"
+      port: 8301
+      targetPort: 8301
+    - name: serflan-udp
+      protocol: "UDP"
+      port: 8301
+      targetPort: 8301
+    - name: serfwan-tcp
+      protocol: "TCP"
+      port: 8302
+      targetPort: 8302
+    - name: serfwan-udp
+      protocol: "UDP"
+      port: 8302
+      targetPort: 8302
+    - name: http
+      port: 8500
+      targetPort: 8500
+    - name: consuldns-tcp
+      protocol: "TCP"
+      port: 8600
+      targetPort: 8600
+    - name: consuldns-udp
+      protocol: "UDP"
+      port: 8600
+      targetPort: 8600
+  selector:
+    app: consul
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: consul-nodeport-svc
+spec:
+  type: NodePort
+  selector:
+    app: consul
+  ports:
+  - name: server
+    protocol: TCP
+    port: 8300
+    nodePort: 30300
+  - name: serflan-tcp
+    protocol: TCP
+    port: 8301
+    nodePort: 30301
+  - name: serflan-udp
+    protocol: UDP
+    port: 8301
+    nodePort: 30301
+  - name: serfwan-tcp
+    protocol: TCP
+    port: 8302
+    nodePort: 30302
+  - name: serfwan-udp
+    protocol: UDP
+    port: 8302
+    nodePort: 30302
+  - name: http
+    protocol: TCP
+    port: 8500
+    nodePort: 30500
+  - name: consuldns-tcp
+    protocol: TCP
+    port: 8600
+    nodePort: 30600
+  - name: consuldns-udp
+    protocol: UDP
+    port: 8600
+    nodePort: 30600

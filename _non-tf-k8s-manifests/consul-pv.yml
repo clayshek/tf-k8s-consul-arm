@@ -1,0 +1,50 @@
+apiVersion: v1 
+kind: PersistentVolume 
+metadata:
+  name: consul-data0-pv
+spec:
+  capacity:
+    storage: 750Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: consul
+  nfs:
+    path: /mnt/usbdrive1/consul-data0
+    server: 192.168.1.20
+    readOnly: false
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: consul-data1-pv
+spec:
+  capacity:
+    storage: 750Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: consul
+  nfs:
+    path: /mnt/usbdrive1/consul-data1
+    server: 192.168.1.20
+    readOnly: false
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: consul-data2-pv
+spec:
+  capacity:
+    storage: 750Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: consul
+  nfs:
+    path: /mnt/usbdrive1/consul-data2
+    server: 192.168.1.20
+    readOnly: false
