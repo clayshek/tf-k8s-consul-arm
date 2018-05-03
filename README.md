@@ -49,8 +49,8 @@ NFS References:
 ## Usage
 
 - Clone the repository
-- Customize the parameters in the terraform.tfvars file as applicable for provisioning. Includes DDClient <a href="https://sourceforge.net/p/ddclient/wiki/usage/">config</a> as well as Persistent Volume config. See note in terraform.tfvars regarding base64 Secrets encoding differences from native Kubernetes secrets; also blurb on <a href="https://www.terraform.io/docs/state/sensitive-data.html">Terraform Sensitive Data in State</a>.
-- Build the custom Terraform Kubernetes provider (see steps below)
+- Customize the parameters in the terraform.tfvars file as applicable for provisioning.
+- Build the custom Terraform Kubernetes provider (see steps below), or alternatively use the pre-built binary (terraform-provider-kubernetes.exe for Windows or terraform-provider-kubernetes for ARM) included in this repo.
 - Run <code>terraform init</code> (required for first run). 
 - Apply the configuration:
 
